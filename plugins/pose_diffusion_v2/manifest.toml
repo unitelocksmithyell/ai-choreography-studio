@@ -1,0 +1,7 @@
+name = "pose_diffusion_v2"
+version = "0.6.0"
+api_version = "1.0"
+entrypoint = "plugin:Plugin"
+description = "Diffusion pose planner (ONNX). Style-conditioned, deterministic by seed."
+capabilities = ["pose_planning"]
+requires = ["onnxruntime>=1.18", "numpy>=1.26"]
