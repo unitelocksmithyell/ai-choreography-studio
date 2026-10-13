@@ -1,0 +1,69 @@
+[build-system]
+requires = ["hatchling>=1.24"]
+build-backend = "hatchling.build"
+
+[project]
+name = "ai-choreography-studio"
+version = "0.6.3"
+description = "Plugin-host AI dance / choreography generator for Windows desktop."
+readme = "README.md"
+requires-python = ">=3.12"
+license = { text = "Apache-2.0" }
+authors = [{ name = "ai-choreography-studio contributors" }]
+keywords = ["choreography", "dance", "motion-generation", "beat-detection", "plugin-host"]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Environment :: Win32 (MS Windows)",
+  "Intended Audience :: End Users/Desktop",
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Multimedia :: Video :: Non-Linear Editor",
+  "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+
+dependencies = [
+  "numpy>=1.26",
+  "scipy>=1.13",
+  "librosa>=0.10.2",
+  "soundfile>=0.12",
+  "torch>=2.4",
+  "onnxruntime>=1.18",
+  "pydantic>=2.8",
+  "tomli-w>=1.0",
+  "typer>=0.12",
+  "rich>=13.7",
+  "watchdog>=4.0",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.2",
+  "pytest-asyncio>=0.23",
+  "mypy>=1.11",
+  "ruff>=0.6",
+  "black>=24.8",
+  "pre-commit>=3.8",
+]
+gui = ["PySide6>=6.7"]
+
+[project.scripts]
+choreo = "choreo_host.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["choreo_host", "choreo_contracts", "choreo_services", "choreo_utils"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM", "RUF"]
+ignore = ["E501"]
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+files = ["choreo_host", "choreo_contracts"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
