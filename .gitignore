@@ -1,0 +1,44 @@
+# ai-choreography-studio — Python + plugin cache
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+.venv/
+venv/
+env/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# choreography runtime artifacts
+*.chg.tmp
+*.chg.lock
+exports/
+renders/
+cache/
+motion_cache/
+clip_cache/
+*.bvh.bak
+*.fbx.bak
+*.mp4.partial
+
+# model checkpoints (large — use git-lfs or release assets)
+models/checkpoints/*.pt
+models/checkpoints/*.onnx
+models/checkpoints/*.safetensors
+
+# IDE / OS
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
+
+# secrets
+.env
+.env.local
+config/local.toml
