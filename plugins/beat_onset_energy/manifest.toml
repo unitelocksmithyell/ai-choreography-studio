@@ -1,0 +1,7 @@
+name = "beat_onset_energy"
+version = "0.4.1"
+api_version = "1.0"
+entrypoint = "plugin:Plugin"
+description = "Onset-energy beat detector (librosa). Fast, no model weights."
+capabilities = ["beat_detection"]
+requires = ["librosa>=0.10.2"]
